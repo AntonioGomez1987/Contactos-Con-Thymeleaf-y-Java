@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="httml://www.thymeleaf.org">
+<head th:replace="~{fragmentos/cabecero::cabecero-seccion(titulo='Inicio Contactos JAG')}"></head>
+<body>
+    <!--Div es del menu de navegacion-->
+    <div th:replace="~{fragmentos/navegacion::navegacion-seccion}"></div>
+
+    <!--Div es de tabla de lista de contactos-->
+    <div class="container">
+        <div class="container text-center" style="margin:30px">
+            <h3>Contactos</h3>
+        </div>
+        <div class="container">
+            <table class="table table-bordered border-primary table-success table-striped table-hover align-middle">
+                <thead class="table-dark text-center">
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Celular</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Acciones</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="contacto: ${contactos}">
+                    <th th:text="${contacto.idContacto}" scope="row"></th>
+                    <td th:text="${contacto.nombreContacto}"></td>
+                    <td th:text="${contacto.celularContacto}"></td>
+                    <td th:text="${contacto.emailContacto}"></td>
+                    <td class="text-center">
+                        <div class="container">
+                            <a th:href="@{/editar/{id}(id=${contacto.idContacto})}"
+                               class="btn btn-warning btn-sm me-3">Editar</a>
+                            <a th:href="@{/eliminar/{id}(id=${contacto.idContacto})}"
+                               class="btn btn-danger btn-sm">Eliminar</a>
+                        </div>
+                    </td>
+                </tr>
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+<div th:replace="~{fragmentos/pie-pagina::pie-pagina-seccion}"></div>
+
+</body>
+</html>
