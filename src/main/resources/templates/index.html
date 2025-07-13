@@ -18,6 +18,7 @@
                     <th scope="col">Nombre</th>
                     <th scope="col">Celular</th>
                     <th scope="col">Email</th>
+                    <th scope="col"></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -26,6 +27,12 @@
                     <td th:text="${contacto.nombreContacto}"></td>
                     <td th:text="${contacto.celularContacto}"></td>
                     <td th:text="${contacto.emailContacto}"></td>
+                    <td class="text-center">
+                        <div class="container">
+                            <a th:href="@{/editar/{id}(id=${contacto.idContacto})}"
+                               class="btn btn-warning btn-sm me-3">Editar</a>
+                        </div>
+                    </td>
                 </tr>
 
                 </tbody>
